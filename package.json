@@ -4,26 +4,29 @@
   "description": "AI-powered e-commerce platform where merchants and AI agents collaborate to grow businesses",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:agents\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "build": "npm run build:frontend && npm run build:backend",
+    "dev:agents": "cd agents && python -m uvicorn main:app --reload --port 8001",
+    "build": "npm run build:frontend",
     "build:frontend": "cd frontend && npm run build",
-    "build:backend": "cd backend && npm run build",
-    "start": "npm run start:backend",
-    "start:backend": "cd backend && npm start",
-    "test": "npm run test:frontend && npm run test:backend",
+    "start": "npm run start:frontend",
+    "start:frontend": "cd frontend && npm start",
+    "test": "npm run test:frontend && npm run test:agents",
     "test:frontend": "cd frontend && npm test",
-    "test:backend": "cd backend && npm test",
-    "lint": "npm run lint:frontend && npm run lint:backend",
+    "test:agents": "cd agents && pytest",
+    "lint": "npm run lint:frontend && npm run lint:agents",
     "lint:frontend": "cd frontend && npm run lint",
-    "lint:backend": "cd backend && npm run lint",
-    "setup": "npm install && npm run setup:frontend && npm run setup:backend",
+    "lint:agents": "cd agents && flake8 .",
+    "setup": "npm install && npm run setup:frontend && npm run setup:agents",
     "setup:frontend": "cd frontend && npm install",
-    "setup:backend": "cd backend && npm install",
+    "setup:agents": "cd agents && pip install -r requirements.txt",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "docker:build": "docker-compose build"
+    "docker:build": "docker-compose build",
+    "supabase:start": "npx supabase start",
+    "supabase:stop": "npx supabase stop",
+    "supabase:reset": "npx supabase db reset",
+    "supabase:gen-types": "npx supabase gen types typescript --local > frontend/types/supabase.ts"
   },
   "keywords": [
     "ecommerce",
@@ -35,7 +38,10 @@
     "artificial-intelligence",
     "machine-learning",
     "chatbot",
-    "business-automation"
+    "business-automation",
+    "supabase",
+    "nextjs",
+    "react"
   ],
   "author": {
     "name": "Subramanya Nagabhushanaradhya",
@@ -55,7 +61,8 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
     "prettier": "^3.1.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "supabase": "^1.142.2"
   },
   "engines": {
     "node": ">=18.0.0",

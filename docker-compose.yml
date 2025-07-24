@@ -1,23 +1,7 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database
-  postgres:
-    image: postgres:15-alpine
-    container_name: tryomniverse-postgres
-    environment:
-      POSTGRES_DB: tryomniverse
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    networks:
-      - tryomniverse-network
-
-  # Redis Cache
+  # Redis Cache (for agent system and caching)
   redis:
     image: redis:7-alpine
     container_name: tryomniverse-redis
@@ -29,7 +13,7 @@ services:
     networks:
       - tryomniverse-network
 
-  # Vector Database (Qdrant)
+  # Vector Database (Qdrant) for AI agent memory
   qdrant:
     image: qdrant/qdrant:latest
     container_name: tryomniverse-qdrant
@@ -41,30 +25,6 @@ services:
     networks:
       - tryomniverse-network
 
-  # Backend API
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
-    container_name: tryomniverse-backend
-    ports:
-      - "8000:8000"
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/tryomniverse
-      - REDIS_URL=redis://redis:6379
-      - QDRANT_URL=http://qdrant:6333
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    depends_on:
-      - postgres
-      - redis
-      - qdrant
-    networks:
-      - tryomniverse-network
-    command: npm run dev
-
   # Frontend Application
   frontend:
     build:
@@ -75,18 +35,17 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     volumes:
       - ./frontend:/app
       - /app/node_modules
       - /app/.next
-    depends_on:
-      - backend
     networks:
       - tryomniverse-network
     command: npm run dev
 
-  # AI Agent Service
+  # AI Agent Service (Python)
   agents:
     build:
       context: ./agents
@@ -96,13 +55,13 @@ services:
       - "8001:8001"
     environment:
       - PYTHON_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/tryomniverse
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
       - REDIS_URL=redis://redis:6379
       - QDRANT_URL=http://qdrant:6333
     volumes:
       - ./agents:/app
     depends_on:
-      - postgres
       - redis
       - qdrant
     networks:
@@ -110,7 +69,6 @@ services:
     command: python -m uvicorn main:app --host 0.0.0.0 --port 8001 --reload
 
 volumes:
-  postgres_data:
   redis_data:
   qdrant_data:
 

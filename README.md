@@ -33,20 +33,24 @@ TryOmniverse is an e-commerce-focused AI agent platform inspired by [Den.io](htt
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React/Next.js with TypeScript
-- **Backend**: Node.js/Express with Python microservices
-- **Database**: PostgreSQL with Redis caching
-- **AI/ML**: OpenAI GPT-4, LangChain, Vector databases
-- **Infrastructure**: Docker, Kubernetes, AWS/GCP
-- **Real-time**: WebSockets, Server-Sent Events
+- **Frontend**: Next.js 14 with TypeScript and Tailwind CSS
+- **Backend**: Supabase (PostgreSQL + Real-time + Auth + Storage)
+- **AI Agents**: Python microservices with LangChain and OpenAI
+- **Vector Database**: Qdrant for AI agent memory and embeddings
+- **Cache**: Redis for agent system coordination
+- **Infrastructure**: Docker, Supabase Cloud/Self-hosted
+- **Real-time**: Supabase Realtime for live updates
 
 ## 🏗️ Project Structure
 
 ```
 tryomniverse/
-├── frontend/           # React/Next.js web application
-├── backend/            # Node.js API server
-├── agents/             # AI agent implementations
+├── frontend/           # Next.js web application
+├── agents/             # Python AI agent implementations
+├── supabase/           # Database schema and configuration
+│   ├── migrations/     # Database migrations
+│   ├── seed.sql       # Initial data
+│   └── config.toml    # Local development config
 ├── integrations/       # E-commerce platform integrations
 ├── shared/             # Shared utilities and types
 ├── docs/               # Documentation and guides
@@ -59,7 +63,7 @@ tryomniverse/
 - Node.js 18+
 - Python 3.9+
 - Docker and Docker Compose
-- PostgreSQL 14+
+- Supabase CLI
 
 ### Installation
 
@@ -69,28 +73,63 @@ git clone https://github.com/subramanya1997/tryomniverse.git
 cd tryomniverse
 
 # Install dependencies
-npm install
+npm run setup
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your configuration
+# Edit .env with your Supabase configuration
 
-# Start development environment
-docker-compose up -d
+# Option 1: Use Supabase Cloud
+# 1. Create a new project at https://supabase.com
+# 2. Copy your project URL and anon key to .env
+# 3. Run migrations: npx supabase db push
+
+# Option 2: Local Supabase development
+npx supabase start
+npm run supabase:gen-types
+
+# Start local development services
+npm run docker:up
+
+# Start development servers
 npm run dev
 ```
+
+### Supabase Setup
+
+1. **Create a Supabase Project**:
+   - Go to [supabase.com](https://supabase.com)
+   - Create a new project
+   - Copy your project URL and anon key
+
+2. **Configure Environment Variables**:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   SUPABASE_URL=https://your-project.supabase.co
+   SUPABASE_SERVICE_KEY=your-service-role-key
+   ```
+
+3. **Deploy Database Schema**:
+   ```bash
+   npx supabase link --project-ref your-project-ref
+   npx supabase db push
+   npx supabase db seed
+   ```
 
 ## 🎯 Roadmap
 
 ### Phase 1: Foundation (Q1 2025)
-- [ ] Core platform architecture
-- [ ] Basic agent framework
+- [x] Supabase backend setup with authentication
+- [x] Core database schema for e-commerce data
+- [ ] Basic AI agent framework
 - [ ] Shopify integration
 - [ ] Simple dashboard UI
 
 ### Phase 2: Core Features (Q2 2025)
-- [ ] Multi-agent system
+- [ ] Multi-agent system with LangChain
 - [ ] Amazon & eBay integrations
+- [ ] Real-time agent communication
 - [ ] Advanced analytics dashboard
 - [ ] Customer service automation
 
@@ -99,12 +138,42 @@ npm run dev
 - [ ] Predictive inventory management
 - [ ] Multi-tenant architecture
 - [ ] Mobile application
+- [ ] Advanced workflow automation
 
 ### Phase 4: Scale (Q4 2025)
 - [ ] Enterprise features
-- [ ] Advanced AI models
+- [ ] Advanced AI models and training
 - [ ] Global marketplace support
 - [ ] Open-source community
+
+## 🏛️ Architecture
+
+### Supabase Backend
+- **Database**: PostgreSQL with Row Level Security (RLS)
+- **Authentication**: Built-in auth with JWT tokens
+- **Real-time**: Live updates for agent conversations
+- **Storage**: File storage for product images and documents
+- **Edge Functions**: Custom business logic (future)
+
+### AI Agent System
+- **Python Microservices**: FastAPI-based agent services
+- **LangChain Integration**: Agent framework and tool integration
+- **Vector Memory**: Qdrant for persistent agent memory
+- **Redis Queue**: Background job processing
+
+### Frontend Application
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Supabase Client**: Real-time data synchronization
+- **Tailwind CSS**: Modern, responsive design
+
+## 🛡️ Security
+
+- **Row Level Security**: Database-level access control
+- **JWT Authentication**: Secure API access
+- **Environment Variables**: Secure credential management
+- **API Rate Limiting**: Prevent abuse
+- **Data Encryption**: Sensitive data protection
 
 ## 🤝 Contributing
 
