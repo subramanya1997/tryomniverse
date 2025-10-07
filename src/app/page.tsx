@@ -111,14 +111,7 @@ const faqs = [
 export default function Home() {
   return (
     <div className="space-y-24 pb-24">
-      <section className="relative overflow-hidden pb-16 pt-24">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-hero-grid opacity-60" />
-          <div className="absolute inset-0 bg-hero-aurora opacity-70" />
-          <div className="absolute left-1/2 top-8 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(129,140,248,0.28),_transparent_62%)] blur-3xl" />
-          <div className="absolute -left-44 top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,_rgba(45,212,191,0.24),_transparent_58%)] blur-3xl" />
-          <div className="absolute -right-36 top-14 h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.22),_transparent_58%)] blur-3xl" />
-        </div>
+      <section className="relative overflow-hidden bg-secondary/15 pb-16 pt-24">
         <div className="container grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-8">
             <Badge className="w-fit border-primary/50 bg-primary/15 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
@@ -155,9 +148,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-hero-grid opacity-70" />
-            <Card className="relative h-full min-h-[460px] overflow-hidden border-border/60 bg-card/90 p-0 shadow-card backdrop-blur">
-              <div className="absolute inset-0 bg-[linear-gradient(130deg,_rgba(129,140,248,0.18),_rgba(56,189,248,0.12)_45%,_transparent_80%)]" />
+            <Card className="relative h-full min-h-[460px] overflow-hidden border-border/60 bg-card p-0 shadow-card">
               <div className="relative flex h-full flex-col justify-between p-8">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -469,7 +460,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="container">
-        <Card className="overflow-hidden border-border/60 bg-gradient-to-br from-primary/15 via-secondary/12 to-background/80 p-10 backdrop-blur">
+        <Card className="overflow-hidden border-border/60 bg-card/85 p-10 shadow-card backdrop-blur">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div className="space-y-4">
               <Badge variant="outline" className="w-fit border-border/60 text-foreground">

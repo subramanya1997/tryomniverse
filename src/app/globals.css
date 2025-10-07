@@ -3,26 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --background: 232 46% 5%;
-  --foreground: 215 66% 96%;
-  --muted: 229 32% 14%;
-  --muted-foreground: 218 19% 72%;
-  --popover: 234 52% 7%;
-  --popover-foreground: 215 66% 96%;
-  --card: 233 48% 8%;
-  --card-foreground: 215 66% 96%;
-  --border: 229 32% 20%;
-  --input: 229 32% 20%;
-  --primary: 262 92% 73%;
-  --primary-foreground: 220 100% 98%;
-  --secondary: 196 92% 70%;
-  --secondary-foreground: 217 92% 12%;
-  --accent: 156 86% 52%;
-  --accent-foreground: 220 100% 98%;
-  --destructive: 358 82% 62%;
-  --destructive-foreground: 0 0% 100%;
-  --ring: 262 92% 73%;
-  --radius: 0.9rem;
+  --radius: 0.65rem;
+  --background: 1 0 0;
+  --foreground: 0.141 0.005 285.823;
+  --card: 1 0 0;
+  --card-foreground: 0.141 0.005 285.823;
+  --popover: 1 0 0;
+  --popover-foreground: 0.141 0.005 285.823;
+  --primary: 0.705 0.213 47.604;
+  --primary-foreground: 0.98 0.016 73.684;
+  --secondary: 0.967 0.001 286.375;
+  --secondary-foreground: 0.21 0.006 285.885;
+  --muted: 0.967 0.001 286.375;
+  --muted-foreground: 0.552 0.016 285.938;
+  --accent: 0.967 0.001 286.375;
+  --accent-foreground: 0.21 0.006 285.885;
+  --destructive: 0.577 0.245 27.325;
+  --destructive-foreground: 0.98 0.016 73.684;
+  --border: 0.92 0.004 286.32;
+  --input: 0.92 0.004 286.32;
+  --ring: 0.705 0.213 47.604;
+  --chart-1: 0.646 0.222 41.116;
+  --chart-2: 0.6 0.118 184.704;
+  --chart-3: 0.398 0.07 227.392;
+  --chart-4: 0.828 0.189 84.429;
+  --chart-5: 0.769 0.188 70.08;
+  --sidebar: 0.985 0 0;
+  --sidebar-foreground: 0.141 0.005 285.823;
+  --sidebar-primary: 0.705 0.213 47.604;
+  --sidebar-primary-foreground: 0.98 0.016 73.684;
+  --sidebar-accent: 0.967 0.001 286.375;
+  --sidebar-accent-foreground: 0.21 0.006 285.885;
+  --sidebar-border: 0.92 0.004 286.32;
+  --sidebar-ring: 0.705 0.213 47.604;
+}
+
+.dark {
+  --background: 0.141 0.005 285.823;
+  --foreground: 0.985 0 0;
+  --card: 0.21 0.006 285.885;
+  --card-foreground: 0.985 0 0;
+  --popover: 0.21 0.006 285.885;
+  --popover-foreground: 0.985 0 0;
+  --primary: 0.646 0.222 41.116;
+  --primary-foreground: 0.98 0.016 73.684;
+  --secondary: 0.274 0.006 286.033;
+  --secondary-foreground: 0.985 0 0;
+  --muted: 0.274 0.006 286.033;
+  --muted-foreground: 0.705 0.015 286.067;
+  --accent: 0.274 0.006 286.033;
+  --accent-foreground: 0.985 0 0;
+  --destructive: 0.704 0.191 22.216;
+  --destructive-foreground: 0.985 0 0;
+  --border: 0.985 0 0;
+  --input: 0.985 0 0;
+  --ring: 0.646 0.222 41.116;
+  --chart-1: 0.488 0.243 264.376;
+  --chart-2: 0.696 0.17 162.48;
+  --chart-3: 0.769 0.188 70.08;
+  --chart-4: 0.627 0.265 303.9;
+  --chart-5: 0.645 0.246 16.439;
+  --sidebar: 0.21 0.006 285.885;
+  --sidebar-foreground: 0.985 0 0;
+  --sidebar-primary: 0.646 0.222 41.116;
+  --sidebar-primary-foreground: 0.98 0.016 73.684;
+  --sidebar-accent: 0.274 0.006 286.033;
+  --sidebar-accent-foreground: 0.985 0 0;
+  --sidebar-border: 0.985 0 0;
+  --sidebar-ring: 0.646 0.222 41.116;
 }
 
 @layer base {
@@ -32,43 +80,5 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image:
-      radial-gradient(circle at 12% 16%, rgba(129, 140, 248, 0.34), transparent 58%),
-      radial-gradient(circle at 78% 8%, rgba(45, 212, 191, 0.26), transparent 64%),
-      radial-gradient(circle at 65% 92%, rgba(56, 189, 248, 0.22), transparent 70%),
-      linear-gradient(180deg, rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.95));
-    background-attachment: fixed;
-  }
-
-  body::before,
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  body::before {
-    background:
-      radial-gradient(circle at 10% 40%, rgba(99, 102, 241, 0.16), transparent 60%),
-      radial-gradient(circle at 88% 12%, rgba(56, 189, 248, 0.18), transparent 62%),
-      linear-gradient(160deg, rgba(30, 41, 59, 0.4), transparent 55%);
-    mix-blend-mode: screen;
-  }
-
-  body::after {
-    background:
-      radial-gradient(circle at 50% 120%, rgba(8, 145, 178, 0.22), transparent 65%),
-      radial-gradient(circle at -10% -20%, rgba(76, 29, 149, 0.2), transparent 60%);
-    opacity: 0.75;
-  }
-}
-
-@layer utilities {
-  .bg-grid {
-    background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-    background-size: 60px 60px;
   }
 }
