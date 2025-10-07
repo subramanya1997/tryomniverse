@@ -2,6 +2,9 @@ import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import tailwindcssAnimate from "tailwindcss-animate";
 
+const withOpacityValue = (variable: string) =>
+  `oklch(var(${variable}) / <alpha-value>)`;
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -19,38 +22,38 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: withOpacityValue("--border"),
+        input: withOpacityValue("--input"),
+        ring: withOpacityValue("--ring"),
+        background: withOpacityValue("--background"),
+        foreground: withOpacityValue("--foreground"),
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: withOpacityValue("--primary"),
+          foreground: withOpacityValue("--primary-foreground"),
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: withOpacityValue("--secondary"),
+          foreground: withOpacityValue("--secondary-foreground"),
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: withOpacityValue("--destructive"),
+          foreground: withOpacityValue("--destructive-foreground"),
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: withOpacityValue("--muted"),
+          foreground: withOpacityValue("--muted-foreground"),
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: withOpacityValue("--accent"),
+          foreground: withOpacityValue("--accent-foreground"),
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: withOpacityValue("--popover"),
+          foreground: withOpacityValue("--popover-foreground"),
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: withOpacityValue("--card"),
+          foreground: withOpacityValue("--card-foreground"),
         },
       },
       borderRadius: {
@@ -62,17 +65,9 @@ const config: Config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         mono: ["JetBrains Mono", ...fontFamily.mono],
       },
-      backgroundImage: {
-        "hero-grid":
-          "radial-gradient(circle at 20% 24%, rgba(129,140,248,0.3), transparent 55%), radial-gradient(circle at 78% 12%, rgba(56,189,248,0.2), transparent 55%), radial-gradient(circle at 58% 88%, rgba(45,212,191,0.22), transparent 60%)",
-        "hero-aurora":
-          "linear-gradient(135deg, rgba(129,140,248,0.12), transparent 45%), radial-gradient(circle at 80% 0%, rgba(56,189,248,0.18), transparent 60%), radial-gradient(circle at -10% 120%, rgba(45,212,191,0.18), transparent 65%)",
-        "accent-glow":
-          "radial-gradient(circle at center, rgba(139,92,246,0.22), transparent 60%)",
-      },
       boxShadow: {
-        glow: "0 0 68px rgba(129,140,248,0.35)",
-        card: "0px 28px 60px -30px rgba(3,7,18,0.66)",
+        glow: "0 0 60px oklch(var(--primary) / 0.35)",
+        card: "0px 28px 60px -30px oklch(var(--foreground) / 0.25)",
       },
       keyframes: {
         "fade-up": {

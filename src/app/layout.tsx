@@ -67,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("dark", fontSans.variable)}>
-      <body className="bg-grid font-sans antialiased">
+      <body className="font-sans antialiased">
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

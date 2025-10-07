@@ -9,10 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground shadow-glow hover:from-primary/90 hover:to-secondary/90",
+        default: "bg-primary text-primary-foreground shadow-glow transition-colors hover:bg-primary/85",
         secondary:
-          "border border-secondary/40 bg-secondary/15 text-secondary-foreground shadow-[0_0_40px_rgba(56,189,248,0.35)] hover:bg-secondary/25",
+          "border border-secondary/40 bg-secondary/20 text-secondary-foreground hover:bg-secondary/30",
         outline:
           "border border-border/60 bg-background/40 backdrop-blur-sm hover:bg-background/60",
         ghost: "hover:bg-foreground/10 hover:text-foreground",
