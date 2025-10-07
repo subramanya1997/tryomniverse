@@ -35,7 +35,7 @@ export function SiteFooter() {
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
           <Link href="#" className="text-lg font-semibold tracking-tight text-foreground">
-            Omniverse AI Consulting
+            omniverse
           </Link>
           <p className="text-sm text-muted-foreground">
             Enterprise-grade AI consulting for teams shipping trustworthy, measurable
@@ -61,7 +61,7 @@ export function SiteFooter() {
       </div>
       <Separator className="border-t border-border/60" />
       <div className="container flex flex-col gap-4 py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} Omniverse Labs. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} omniverse labs. All rights reserved.</p>
         <div className="flex gap-4">
           <Link href="#">LinkedIn</Link>
           <Link href="#">X</Link>

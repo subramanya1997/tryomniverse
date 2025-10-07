@@ -27,7 +27,7 @@ export function SiteHeader() {
             <span className="relative text-sm font-bold uppercase">OV</span>
           </span>
           <span className="hidden text-base font-semibold sm:inline-flex">
-            Omniverse AI Consulting
+            omniverse
           </span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">

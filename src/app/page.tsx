@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 const metrics = [
   { value: "120+", label: "Enterprise workflows automated" },
@@ -25,6 +26,7 @@ const services = [
     description:
       "Evaluate opportunities, build executive alignment, and capture ROI with our outcome-driven strategy sprints.",
     highlights: ["Vision framing", "Value modeling", "Capability assessment"],
+    iconClassName: "bg-primary/15 text-primary",
   },
   {
     icon: Code2,
@@ -32,6 +34,7 @@ const services = [
     description:
       "Design, fine-tune, and evaluate models using your proprietary data with our applied research engineers.",
     highlights: ["LLM & RAG", "Multimodal", "Evaluation harness"],
+    iconClassName: "bg-secondary/15 text-secondary",
   },
   {
     icon: Bot,
@@ -39,6 +42,7 @@ const services = [
     description:
       "Ship production-grade copilots and agents that orchestrate across systems with traceable guardrails.",
     highlights: ["Orchestration", "Human-in-the-loop", "Observability"],
+    iconClassName: "bg-accent/15 text-accent",
   },
 ];
 
@@ -71,7 +75,7 @@ const testimonials = [
     name: "Lena Ortiz",
     role: "VP of Product, Stratify",
     quote:
-      "Omniverse translated AI hype into measurable wins. The team embedded with our squads and earned trust fast.",
+      "omniverse translated AI hype into measurable wins. The team embedded with our squads and earned trust fast.",
     avatar: "/avatars/lena.svg",
   },
   {
@@ -85,7 +89,7 @@ const testimonials = [
     name: "Ayla Chen",
     role: "Chief Customer Officer, Meridian Health",
     quote:
-      "The Omniverse team delivers at the pace of our ambition while keeping human impact front and center.",
+      "The team at omniverse delivers at the pace of our ambition while keeping human impact front and center.",
     avatar: "/avatars/ayla.svg",
   },
 ];
@@ -121,7 +125,7 @@ export default function Home() {
               Build intelligence your operators trust and your executives can scale.
             </h1>
             <p className="max-w-2xl text-lg text-muted-foreground">
-              Omniverse partners with enterprises to imagine, engineer, and operationalize AI systems that create measurable value—without compromising on safety, ethics, or speed.
+              At omniverse, we partner with enterprises to imagine, engineer, and operationalize AI systems that create measurable value—without compromising on safety, ethics, or speed.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button asChild size="lg">
@@ -195,14 +199,19 @@ export default function Home() {
             From boardroom vision to the dashboards your teams depend on.
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Engage Omniverse across the lifecycle or plug in specialized squads to accelerate a single mission-critical program.
+            Engage omniverse across the lifecycle or plug in specialized squads to accelerate a single mission-critical program.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((service) => (
             <Card key={service.title} className="border-border/60 bg-card/80 backdrop-blur">
               <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                <div
+                  className={cn(
+                    "flex h-12 w-12 items-center justify-center rounded-xl",
+                    service.iconClassName,
+                  )}
+                >
                   <service.icon className="h-6 w-6" />
                 </div>
                 <CardTitle>{service.title}</CardTitle>
@@ -358,7 +367,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Sparkles className="h-5 w-5 text-secondary" />
-              Expert commentary from Omniverse partners
+              Expert commentary from omniverse partners
             </div>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -396,9 +405,6 @@ export default function Home() {
       <section className="container space-y-12">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-4">
-            <Badge variant="outline" className="w-fit">
-              Voices from the field
-            </Badge>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Teams we empower to lead in the age of intelligence.
             </h2>
@@ -506,7 +512,7 @@ export default function Home() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="company">Company</Label>
-                <Input id="company" name="company" placeholder="Omniverse Labs" required />
+                <Input id="company" name="company" placeholder="omniverse labs" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="timeline">Initiative timeline</Label>
