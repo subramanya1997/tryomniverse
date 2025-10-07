@@ -37,26 +37,26 @@ const fontSans = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Omniverse AI Consulting",
-    template: "%s · Omniverse AI Consulting",
+    default: "omniverse",
+    template: "%s · omniverse",
   },
   description:
     "Modern AI consulting for enterprises building trustworthy, production-ready intelligence.",
   metadataBase: new URL("https://omniverse.ai"),
   openGraph: {
-    title: "Omniverse AI Consulting",
+    title: "omniverse",
     description:
       "Modern AI consulting for enterprises building trustworthy, production-ready intelligence.",
     url: "https://omniverse.ai",
-    siteName: "Omniverse AI Consulting",
+    siteName: "omniverse",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Omniverse AI Consulting",
+    title: "omniverse",
     description:
-      "Partner with Omniverse to ship measurable AI outcomes, responsibly.",
+      "Partner with omniverse to ship measurable AI outcomes, responsibly.",
   },
 };
 

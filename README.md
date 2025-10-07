@@ -1,6 +1,6 @@
-## Omniverse – AI Consulting Experience
+## omniverse – AI Consulting Experience
 
-This repository contains the marketing website for **Omniverse**, a modern AI consulting studio. The site is built with [Next.js](https://nextjs.org), the App Router, TypeScript, Tailwind CSS, and [shadcn/ui](https://ui.shadcn.com/) components.
+This repository contains the marketing website for **omniverse**, a modern AI consulting studio. The site is built with [Next.js](https://nextjs.org), the App Router, TypeScript, Tailwind CSS, and [shadcn/ui](https://ui.shadcn.com/) components.
 
 ### Prerequisites
 
