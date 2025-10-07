@@ -2,15 +2,8 @@ import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import tailwindcssAnimate from "tailwindcss-animate";
 
-const withOpacityValue = (variable: string) => {
-  return ({ opacityValue }: { opacityValue?: string }) => {
-    if (opacityValue !== undefined) {
-      return `oklch(var(${variable}) / ${opacityValue})`;
-    }
-
-    return `oklch(var(${variable}))`;
-  };
-};
+const withOpacityValue = (variable: string) =>
+  `oklch(var(${variable}) / <alpha-value>)`;
 
 const config: Config = {
   darkMode: ["class"],
