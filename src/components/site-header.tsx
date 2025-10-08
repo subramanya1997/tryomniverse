@@ -1,13 +1,12 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
-import { OmniverseLogo } from "./omniverse-logo";
 
 const navItems = [
   { href: "#services", label: "Services" },
@@ -25,12 +24,16 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center justify-between gap-6">
         <Link
           href="#"
-          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+          className="flex items-center text-lg font-semibold tracking-tight text-foreground"
         >
-          <OmniverseLogo className="h-7 w-7" />
-          <span className="hidden text-base font-semibold sm:inline-flex">
-            omniverse
-          </span>
+          <Image
+            src="/logo-dark.svg"
+            alt="Omniverse"
+            width={140}
+            height={40}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
           {navItems.map((item) => (
