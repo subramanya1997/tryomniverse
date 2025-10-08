@@ -26,7 +26,9 @@ const services = [
     description:
       "Evaluate opportunities, build executive alignment, and capture ROI with our outcome-driven strategy sprints.",
     highlights: ["Vision framing", "Value modeling", "Capability assessment"],
-    iconClassName: "bg-primary/15 text-primary",
+    iconClassName: "bg-emerald-500/15 text-emerald-500",
+    borderClassName: "border-emerald-500/40",
+    bulletClassName: "bg-emerald-500/60",
   },
   {
     icon: Code2,
@@ -34,7 +36,9 @@ const services = [
     description:
       "Design, fine-tune, and evaluate models using your proprietary data with our applied research engineers.",
     highlights: ["LLM & RAG", "Multimodal", "Evaluation harness"],
-    iconClassName: "bg-secondary/15 text-secondary",
+    iconClassName: "bg-blue-500/15 text-blue-500",
+    borderClassName: "border-blue-500/40",
+    bulletClassName: "bg-blue-500/60",
   },
   {
     icon: Bot,
@@ -42,7 +46,9 @@ const services = [
     description:
       "Ship production-grade copilots and agents that orchestrate across systems with traceable guardrails.",
     highlights: ["Orchestration", "Human-in-the-loop", "Observability"],
-    iconClassName: "bg-accent/15 text-accent",
+    iconClassName: "bg-violet-500/15 text-violet-500",
+    borderClassName: "border-violet-500/40",
+    bulletClassName: "bg-violet-500/60",
   },
 ];
 
@@ -156,12 +162,12 @@ export default function Home() {
               <div className="relative flex h-full flex-col justify-between p-8">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2 rounded-full border border-border/50 bg-background/70 px-4 py-2 text-xs uppercase tracking-wide">
-                      <Sparkles className="h-4 w-4 text-primary" />
+                  <div className="flex items-center gap-2 rounded-full border border-orange-500/60 bg-orange-500/10 px-4 py-2 text-xs uppercase tracking-wide text-orange-500">
+                      <Sparkles className="h-4 w-4" />
                       Intelligent transformation
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <ShieldCheck className="h-4 w-4 text-secondary" />
+                    <div className="flex items-center gap-2 rounded-full border border-cyan-500/60 bg-cyan-500/10 px-4 py-2 text-xs uppercase tracking-wide text-cyan-500">
+                      <ShieldCheck className="h-4 w-4" />
                       SOC2-ready
                     </div>
                   </div>
@@ -172,17 +178,23 @@ export default function Home() {
                     Strategy partners, applied scientists, prompt engineers, and experience designers working as one squad with you.
                   </p>
                 </div>
-                <div className="grid gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3">
-                    <Building2 className="h-5 w-5 text-primary" />
+                <div className="mt-8 grid gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-3 rounded-2xl border border-orange-500/50 bg-background/70 px-4 py-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-500/10">
+                      <Building2 className="h-5 w-5 text-orange-500" />
+                    </div>
                     Multinational enterprises across 11 industries
                   </div>
-                  <div className="flex items-center gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3">
-                    <ChartBar className="h-5 w-5 text-secondary" />
+                  <div className="flex items-center gap-3 rounded-2xl border border-blue-500/50 bg-background/70 px-4 py-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/10">
+                      <ChartBar className="h-5 w-5 text-blue-500" />
+                    </div>
                     Impact dashboards shipping every two weeks
                   </div>
-                  <div className="flex items-center gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3">
-                    <ShieldCheck className="h-5 w-5 text-accent" />
+                  <div className="flex items-center gap-3 rounded-2xl border border-purple-500/50 bg-background/70 px-4 py-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-purple-500/10">
+                      <ShieldCheck className="h-5 w-5 text-purple-500" />
+                    </div>
                     Trust & governance baked into every release
                   </div>
                 </div>
@@ -204,7 +216,13 @@ export default function Home() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((service) => (
-            <Card key={service.title} className="border-border/60 bg-card/80 backdrop-blur">
+            <Card
+              key={service.title}
+              className={cn(
+                "border bg-card/80 backdrop-blur",
+                service.borderClassName ?? "border-border/60",
+              )}
+            >
               <CardHeader>
                 <div
                   className={cn(
@@ -221,7 +239,12 @@ export default function Home() {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   {service.highlights.map((highlight) => (
                     <li key={highlight} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
+                      <span
+                        className={cn(
+                          "h-1.5 w-1.5 rounded-full",
+                          service.bulletClassName ?? "bg-primary/60",
+                        )}
+                      />
                       {highlight}
                     </li>
                   ))}
@@ -362,11 +385,11 @@ export default function Home() {
               Stay ahead with actionable research covering AI governance, architecture patterns, and org design for intelligent products.
             </p>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <LineChart className="h-5 w-5 text-primary" />
+              <LineChart className="h-5 w-5 text-amber-500" />
               Benchmark data from 150+ AI programs
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Sparkles className="h-5 w-5 text-secondary" />
+              <Sparkles className="h-5 w-5 text-teal-500" />
               Expert commentary from omniverse partners
             </div>
           </div>
@@ -395,47 +418,6 @@ export default function Home() {
                     {index === 4 &&
                       "Evolving rituals, incentives, and structure to sustain AI velocity."}
                   </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="container space-y-12">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Teams we empower to lead in the age of intelligence.
-            </h2>
-            <p className="text-muted-foreground">
-              We meet you where you are—whether launching the first AI pilot or scaling global automation programs.
-            </p>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="border-border/60 bg-card/80 backdrop-blur">
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">“{testimonial.quote}”</p>
-                  <div className="flex items-center gap-3">
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                      <AvatarFallback>
-                        {testimonial.name
-                          .split(" ")
-                          .map((part) => part[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">
-                        {testimonial.name}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        {testimonial.role}
-                      </div>
-                    </div>
-                  </div>
                 </CardContent>
               </Card>
             ))}
