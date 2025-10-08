@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+import { OmniverseLogo } from "./omniverse-logo";
+
 const navItems = [
   { href: "#services", label: "Services" },
   { href: "#approach", label: "Approach" },
@@ -21,11 +23,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="container flex h-16 items-center justify-between gap-6">
-        <Link href="#" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
-          <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-primary text-primary-foreground shadow-glow">
-            <span className="absolute inset-0 animate-pulse bg-white/15" />
-            <span className="relative text-sm font-bold uppercase">OV</span>
-          </span>
+        <Link
+          href="#"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+        >
+          <OmniverseLogo className="h-7 w-7" />
           <span className="hidden text-base font-semibold sm:inline-flex">
             omniverse
           </span>
